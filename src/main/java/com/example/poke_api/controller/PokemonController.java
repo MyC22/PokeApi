@@ -21,9 +21,8 @@ public class PokemonController {
     }
 
     @GetMapping("/pokename")
-    public ResponseEntity<PokemonResponse> getPokemons(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size) {
+    public ResponseEntity<PokemonResponse> getPokemons(@RequestParam(defaultValue = "0") int page,
+                                                       @RequestParam(defaultValue = "20") int size) {
         try {
             return pokemonService.getPokemons(page, size);
         } catch (Exception e) {
