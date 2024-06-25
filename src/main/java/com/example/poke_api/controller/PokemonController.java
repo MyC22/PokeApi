@@ -1,5 +1,6 @@
 package com.example.poke_api.controller;
 
+import com.example.poke_api.exception.ServiceException;
 import com.example.poke_api.exception.ValidationException;
 import com.example.poke_api.model.PokemonResponse;
 import com.example.poke_api.service.PokemonService;
@@ -33,6 +34,8 @@ public class PokemonController {
             return pokemonService.getPokemons(page, size);
         } catch (ValidationException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }catch (ServiceException e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 }

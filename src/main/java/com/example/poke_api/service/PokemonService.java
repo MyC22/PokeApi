@@ -2,11 +2,9 @@ package com.example.poke_api.service;
 import com.example.poke_api.client.PokemonClient;
 import com.example.poke_api.exception.ServiceException;
 import com.example.poke_api.model.PokemonResponse;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 
 
 @Service
