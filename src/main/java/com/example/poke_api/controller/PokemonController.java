@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/pokemon")
 public class PokemonController {
-
     private final PokemonService pokemonService;
-
 
     public PokemonController(PokemonService pokemonService) {
         this.pokemonService = pokemonService;
