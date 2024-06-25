@@ -1,24 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
 }
+
 li {
     margin-bottom: 5px;
 }
-.pagination {
+
+#pagination {
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
 }
-.pagination button {
-    margin-right: 10px;
+
+#pagination li {
+    display: inline;
+    margin: 0 5px;
+    cursor: pointer;
 }
-.pagination button:last-child {
-    margin-right: 0;
-}
-.active {
+
+#pagination li.active {
     font-weight: bold;
 }
 
-/* Estilos para el formulario flotante */
+#paginationButtons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#paginationButtons button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#paginationButtons button:last-child {
+    margin-right: 0;
+}
+
+#paginationButtons button:hover {
+    background-color: #45a049;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -30,6 +67,7 @@ li {
     overflow: auto;
     background-color: rgba(0,0,0,0.5);
 }
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
@@ -38,15 +76,59 @@ li {
     width: 80%;
     max-width: 600px;
 }
+
 .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#pokemonList {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#pokemonTable {
+    width: 80%;
+    max-width: 600px;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#pokemonTable th, #pokemonTable td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#pokemonTable th:nth-child(1) {
+    width: 60%;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#pokemonTable th:nth-child(2) {
+    width: 40%;
+}
+
+#pokemonTable td button {
+    width: 100%;
+    padding: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#pokemonTable td button:hover {
+    background-color: #45a049;
 }

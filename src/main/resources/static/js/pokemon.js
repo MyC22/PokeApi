@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const apiUrl = '/pokemon/pokename';
-    const pokemonList = document.getElementById('pokemonList');
+    const pokemonTableBody = document.querySelector('#pokemonTable tbody');
     const pagination = document.getElementById('pagination');
     const previousButton = document.getElementById('previousButton');
     const nextButton = document.getElementById('nextButton');
@@ -20,27 +20,32 @@ document.addEventListener('DOMContentLoaded', function() {
                     renderPokemons(pokemonData);
                     updatePaginationButtons(page, size, data.count);
                 } else {
-                    console.error('Error: Data format is incorrect', data);
+                    console.error('Error:Error en la data', data);
                 }
             })
-            .catch(error => console.error('Error fetching data:', error));
+            .catch(error => console.error('Error al obtener la data:', error));
     }
 
     function renderPokemons(pokemons) {
-        pokemonList.innerHTML = '';
+        pokemonTableBody.innerHTML = '';
         pokemons.forEach((pokemon, index) => {
-            const li = document.createElement('li');
-            li.textContent = pokemon.name;
+            const row = document.createElement('tr');
 
+            const nameCell = document.createElement('td');
+            nameCell.textContent = pokemon.name;
+            row.appendChild(nameCell);
+
+            const moreInfoCell = document.createElement('td');
             const moreInfoBtn = document.createElement('button');
             moreInfoBtn.textContent = 'Más Información';
             moreInfoBtn.addEventListener('click', function() {
                 currentPokemonIndex = index;
                 fetchPokemonDetails(pokemon.url);
             });
-            li.appendChild(moreInfoBtn);
+            moreInfoCell.appendChild(moreInfoBtn);
+            row.appendChild(moreInfoCell);
 
-            pokemonList.appendChild(li);
+            pokemonTableBody.appendChild(row);
         });
     }
 
@@ -68,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 showPokemonDetails(data);
             })
-            .catch(error => console.error('Error fetching Pokemon details:', error));
+            .catch(error => console.error('Error al obtener los detalles:', error));
     }
 
     function showPokemonDetails(pokemon) {

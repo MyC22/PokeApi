@@ -9,10 +9,8 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class PokemonClient {
-
     @Value("${pokeapi.url}")
     private String pokeApiUrl;
-
     private final RestTemplate restTemplate;
 
     public PokemonClient(RestTemplate restTemplate){
@@ -20,11 +18,7 @@ public class PokemonClient {
     }
 
     public ResponseEntity<PokemonResponse> getPokemons(int offset, int limit){
-        try {
             String apiUrl = pokeApiUrl + "?offset=" + offset + "&limit=" + limit;
             return restTemplate.getForEntity(apiUrl, PokemonResponse.class);
-        } catch (RestClientException e) {
-            throw new RuntimeException("Error al obtener la data", e);
-        }
     }
 }
