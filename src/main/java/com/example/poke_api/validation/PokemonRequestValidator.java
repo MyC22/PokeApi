@@ -1,7 +1,9 @@
 package com.example.poke_api.validation;
 
 import com.example.poke_api.exception.ValidationException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PokemonRequestValidator {
 
     public void validatePagination(int page, int size){
